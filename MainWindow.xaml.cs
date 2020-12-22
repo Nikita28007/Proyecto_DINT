@@ -24,5 +24,7 @@ namespace Proyecto_DINT
         {
             InitializeComponent();
         }
+
+    
     }
 }
