@@ -87,15 +87,15 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Image Height="400" Width="280"  Grid.Column="0" Source="{Binding peli}" />
+                    <Image Height="400" Width="280"  Grid.Column="0" Source="{Binding ElementName=imagenPeli,Path=Text}" />
                     <Label Grid.Column="1" Width="170" Height="130" Margin="0,30,60,0" Content="Label" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                     <Button Grid.Column="1" Content="Nueva Partida" HorizontalAlignment="Right" Margin="0,30,42,0" VerticalAlignment="Top" Width="85"/>
-                  
+
                     <Button Grid.Column="1" Content="validar" HorizontalAlignment="Right" Margin="0,0,50,0" VerticalAlignment="Center" Width="75"/>
-                    <CheckBox Grid.Column="1" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,100,0,0"/>
-                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" Width="300" Text="TextBlock" Margin="30,180,0,0" VerticalAlignment="Center"/>
+                    <CheckBox Grid.Column="1" Content="Ver pista" HorizontalAlignment="Left"  VerticalAlignment="Center" Margin="30,100,0,0"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" Width="300" Text="{Binding ElementName=pista, Path=Text}" Margin="30,180,0,0" VerticalAlignment="Center"/>
                     <Image Grid.Column="1" Height="100" VerticalAlignment="Bottom" Margin="0,0,0,20" Width="100"/>
-                    <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="35" Margin="15,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="320"/>
+                    <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="35" Margin="15,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="320"/>
 
 
 
@@ -125,39 +125,49 @@
                         </ListView>
                     </ScrollViewer>
                 </DockPanel>
-                <DockPanel Grid.Row="1" Grid.Column="0" LastChildFill="True">
-                    <TextBlock  DockPanel.Dock="Left" Style="{StaticResource gestionTextBlock}"  Margin="15,18,0,278" Text="Titulo de la pelicula" VerticalAlignment="Center"/>
-                    <TextBox Style="{StaticResource gestionTextBox}"  Height="40"  Margin="10,0,0,250"/>
+                <DockPanel Grid.Row="1" Grid.Column="0" LastChildFill="True" Margin="0,0,0,248">
+                    <TextBlock  DockPanel.Dock="Left" Style="{StaticResource gestionTextBlock}"  Margin="15,17,0,31" Text="Titulo de la pelicula" VerticalAlignment="Center"/>
+                    <TextBox Style="{StaticResource gestionTextBox}"  Margin="10,5,0,10"/>
                 </DockPanel>
 
-                <DockPanel Grid.Row="1" Grid.Column="0" LastChildFill="True">
-                    <TextBlock DockPanel.Dock="Left" Style="{StaticResource gestionTextBlock}" Margin="15,79,0,217"  Text="Pista de la pelicula" VerticalAlignment="Center"/>
-                    <TextBox Style="{StaticResource gestionTextBox}"  Height="30"  Margin="10,0,0,130" />
+                <DockPanel Grid.Row="1" Grid.Column="0" LastChildFill="True" Margin="0,58,0,193">
+                    <TextBlock DockPanel.Dock="Left" Style="{StaticResource gestionTextBlock}" Margin="15,19,0,26"  Text="Pista de la pelicula" VerticalAlignment="Center"/>
+                    <TextBox Style="{StaticResource gestionTextBox}" x:Name="pista" Text=""  Margin="10,5,0,10" />
                 </DockPanel>
 
-                <DockPanel Grid.Row="1" Grid.Column="0" LastChildFill="True">
-                    <TextBlock DockPanel.Dock="Left"  Style="{StaticResource gestionTextBlock}" Text="Imagen de la pelicula" VerticalAlignment="Bottom" Margin="15,0,0,140" />
-                    <TextBox Style="{StaticResource gestionTextBox}"  Height="30" Margin="10,0,0,0" />
+                <DockPanel Grid.Column="0" Grid.Row="1" LastChildFill="True" Margin="0,111,0,130"  >
+                    <TextBlock DockPanel.Dock="Left"  Style="{StaticResource gestionTextBlock}" Text="Imagen de la pelicula" VerticalAlignment="Bottom" Margin="15,0,0,37" />
+                    <TextBox Style="{StaticResource gestionTextBox}" x:Name="imagenPeli" Margin="10,7,0,19" />
                 </DockPanel>
 
-                <TextBlock Grid.Row="1" Style="{StaticResource gestionTextBlock}" Text="nivel de dificultad" VerticalAlignment="Bottom" Margin="14,0,0,70" Height="16" Width="94"/>
-                <RadioButton Grid.Row="1" Style="{StaticResource gestionRadioButton}" Content="facil"   Margin="136,0,0,67" Height="15" Width="40"/>
-                <RadioButton Grid.Row="1" Style="{StaticResource gestionRadioButton}" Content="Normal"  Margin="136,0,0,45" Height="15" Width="59" />
-                <RadioButton Grid.Row="1" Style="{StaticResource gestionRadioButton}" Content="Dificil"   Margin="136,0,0,22" Height="15" Width="48" />
+                <TextBlock Grid.Row="1" Style="{StaticResource gestionTextBlock}" Text="nivel de dificultad" VerticalAlignment="Bottom" Margin="14,0,0,113" Height="16" Width="94"/>
+                <RadioButton Grid.Row="1" Style="{StaticResource gestionRadioButton}" Content="facil"   Margin="136,0,0,110" Height="15" Width="40"/>
+                <RadioButton Grid.Row="1" Style="{StaticResource gestionRadioButton}" Content="Normal"  Margin="136,0,0,88" Height="15" Width="59" />
+                <RadioButton Grid.Row="1" Style="{StaticResource gestionRadioButton}" Content="Dificil"   Margin="136,0,0,65" Height="15" Width="48" />
+                <TextBlock Grid.Row="1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Genero" VerticalAlignment="Bottom" Margin="305,0,0,106"/>
+                <ComboBox Grid.Row="1"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="120" Margin="0,0,146,103" MaxDropDownHeight="150">
+                    <ComboBoxItem >acion</ComboBoxItem>
+                    <ComboBoxItem >Comedia</ComboBoxItem>
+                    <ComboBoxItem >Terror</ComboBoxItem>
+                    <ComboBoxItem >Thriller</ComboBoxItem>
+                    <ComboBoxItem >Ficcion</ComboBoxItem>
+                    <ComboBoxItem >Ciencia</ComboBoxItem>
 
-
+                </ComboBox>
 
                 <StackPanel Grid.Column="1" Orientation="Vertical" Height="auto" Grid.Row="0" Grid.RowSpan="2">
                     <Button Style="{StaticResource botones}" Content="Cargar JSON" />
                     <Button Margin="10,0,10,50" Content="Guardar JSON" />
                     <Button Style="{StaticResource botones}" Content="Eliminar pelicula"/>
                     <Button Style="{StaticResource botones}" Content="Añadir pelicula"/>
-                    <Button   Content="Examinar" VerticalAlignment="Bottom" Margin="10,227,10,0"/>
+                    <Button   Content="Examinar" VerticalAlignment="Bottom" Margin="10,315,10,0"/>
 
 
 
 
                 </StackPanel>
+
+
 
 
 
