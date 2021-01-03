@@ -21,9 +21,17 @@ namespace Proyecto_DINT
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private List<Peliculas> listaPelicula;
+
         public MainWindow()
         {
+
             InitializeComponent();
+            listaPelicula = Peliculas.listaPeliculas();
+            peliDockpanel.DataContext = listaPelicula.FirstOrDefault();
+            actualTextBlock.Text = "1";
+
         }
 
         private void cargaJSONButton(object sender, RoutedEventArgs e)
@@ -48,7 +56,7 @@ namespace Proyecto_DINT
         }
         private void examinarButtton(object sender, RoutedEventArgs e)
         {
-           
+
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
             {
@@ -59,5 +67,20 @@ namespace Proyecto_DINT
             }
 
         }
+
+
+
+        private void leftImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            int actual = Int32.Parse(actualTextBlock.Text);
+
+            if (actual > 1)
+            {
+                peliDockpanel.DataContext = listaPelicula[actual - 2];
+                actualTextBlock.Text = (actual - 1).ToString();
+            }
+        }
+
+
     }
 }

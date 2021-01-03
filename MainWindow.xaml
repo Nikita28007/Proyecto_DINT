@@ -69,15 +69,15 @@
     </Window.Resources>
     <TabControl>
         <TabItem Header="Jugar">
-            <DockPanel >
+            <DockPanel x:Name="peliDockpanel">
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Image  Style="{StaticResource flechas}" />
-                    <TextBlock Style="{StaticResource contador}" Text=""/>
+                    <Image  Style="{StaticResource flechas}" MouseLeftButtonUp="left_MouseLeftButtonUp"/>
+                    <TextBlock Style="{StaticResource contador}" x:Name="actualTextBlock" Text=""/>
                     <!--item seleccionado-->
                     <TextBlock Style="{StaticResource contador}" Text="/"/>
                     <TextBlock Style="{StaticResource contador}" Text=""/>
                     <!--numero total de peliculas-->
-                    <Image  Style="{StaticResource flechas}"/>
+                    <Image  Style="{StaticResource flechas}" MouseLeftButtonUp="right_MouseLeftButtonUp"/>
 
 
                 </StackPanel>
