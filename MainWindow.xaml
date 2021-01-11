@@ -71,13 +71,22 @@
         <TabItem Header="Jugar">
             <DockPanel x:Name="peliDockpanel">
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Image  Style="{StaticResource flechas}" MouseLeftButtonUp="left_MouseLeftButtonUp"/>
+                    <Image  Style="{StaticResource flechas}" MouseLeftButtonUp="left_MouseLeftButtonUp" Source="arrow.png"/>
                     <TextBlock Style="{StaticResource contador}" x:Name="actualTextBlock" Text=""/>
                     <!--item seleccionado-->
                     <TextBlock Style="{StaticResource contador}" Text="/"/>
                     <TextBlock Style="{StaticResource contador}" Text=""/>
                     <!--numero total de peliculas-->
-                    <Image  Style="{StaticResource flechas}" MouseLeftButtonUp="right_MouseLeftButtonUp"/>
+                    <Image  Style="{StaticResource flechas}" MouseLeftButtonUp="right_MouseLeftButtonUp" Source="arrowR.png" RenderTransformOrigin="0.5,0.5">
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                                <SkewTransform AngleY="0" AngleX="0"/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
 
 
                 </StackPanel>
