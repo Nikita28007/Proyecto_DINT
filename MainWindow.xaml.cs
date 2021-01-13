@@ -1,7 +1,9 @@
 ﻿using Microsoft.Win32;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,10 +48,26 @@ namespace Proyecto_DINT
         private void cargaJSONButton(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.CheckFileExists = true;
             if (openFileDialog.ShowDialog() == true)
             {
                 openFileDialog.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
                 openFileDialog.InitialDirectory = @"C:\Users\%USERNAME%\Documents";
+
+                if (openFileDialog.FileName.Trim() != string.Empty)
+                {
+                    using (StreamReader r = new StreamReader(openFileDialog.FileName))
+                    {
+                        string json = r.ReadToEnd();
+                        Peliculas items = JsonConvert.DeserializeObject<Peliculas>(json);
+                       
+                    }
+                    
+
+
+
+
+                }
             }
         }
 
@@ -61,6 +79,22 @@ namespace Proyecto_DINT
 
                 saveFileDialog.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
                 saveFileDialog.InitialDirectory = @"C:\Users\%USERNAME%\Documents";
+
+                string output = JsonConvert.SerializeObject(Pelis);
+                try
+                {
+                    string name = saveFileDialog.FileName;
+                    using (StreamWriter sw = new StreamWriter(name))
+                        sw.WriteLine(output);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+
+
+
             }
         }
         private void examinarButtton(object sender, RoutedEventArgs e)
